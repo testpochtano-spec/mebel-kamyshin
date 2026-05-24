@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[64973,["/mebel-kamyshin/_next/static/chunks/0.m9a5znz6-wa.js","/mebel-kamyshin/_next/static/chunks/0d3shmwh5_nmn.js","/mebel-kamyshin/_next/static/chunks/0wil~9dra~~x5.js","/mebel-kamyshin/_next/static/chunks/06cz4qa33~lgv.js","/mebel-kamyshin/_next/static/chunks/0getnx--xxdy9.js"],"CartPageClient"]
+3:I[97367,["/mebel-kamyshin/_next/static/chunks/0.m9a5znz6-wa.js","/mebel-kamyshin/_next/static/chunks/0d3shmwh5_nmn.js","/mebel-kamyshin/_next/static/chunks/0wil~9dra~~x5.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","script","script-0",{"src":"/mebel-kamyshin/_next/static/chunks/06cz4qa33~lgv.js","async":true}],["$","script","script-1",{"src":"/mebel-kamyshin/_next/static/chunks/0getnx--xxdy9.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"3wO6JKeees0dTlgvxeXu2"}
+5:null
