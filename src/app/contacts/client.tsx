@@ -3,6 +3,7 @@
 import { BUSINESS } from "@/data/business";
 import { Phone, MapPin, Clock, Navigation, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { asset } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 export function ContactsPageClient() {
@@ -88,7 +89,7 @@ export function ContactsPageClient() {
               title="Карта проезда — магазин МЕБЕЛЬ Камышин"
             />
           </div>
-          <div className="mt-4 bg-white rounded-2xl border border-border p-4 flex items-center justify-between">
+          <div className="mt-4 bg-white rounded-2xl border border-border p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div>
               <p className="font-semibold text-foreground text-sm">{BUSINESS.shortAddress}</p>
               <p className="text-xs text-muted-foreground">{BUSINESS.region}</p>
@@ -96,10 +97,10 @@ export function ContactsPageClient() {
             <Button
               size="lg"
               nativeButton={false}
-              className="rounded-2xl text-base px-6 h-12 gap-2 bg-[#FC3F1D] hover:bg-[#E5390F] text-white border-0"
+              className="rounded-2xl text-sm sm:text-base px-5 sm:px-6 h-11 sm:h-12 gap-2 bg-[#FC3F1D] hover:bg-[#E5390F] text-white border-0 w-full sm:w-auto shrink-0"
               render={<a href={`https://yandex.ru/maps/?text=${encodeURIComponent(BUSINESS.address)}`} target="_blank" rel="noopener noreferrer" />}
             >
-              <Navigation className="w-5 h-5" /> Открыть в Яндекс.Картах
+              <Navigation className="w-4 sm:w-5 h-4 sm:h-5" /> <span className="sm:hidden">В Яндекс.Картах</span><span className="hidden sm:inline">Открыть в Яндекс.Картах</span>
             </Button>
           </div>
         </motion.div>
@@ -115,7 +116,7 @@ export function ContactsPageClient() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 bg-white rounded-3xl border border-border overflow-hidden shadow-sm">
           <div className="md:col-span-3">
             <img
-              src="/images/store.jpg"
+              src={asset("/images/store.jpg")}
               alt="Магазин МЕБЕЛЬ в Камышине"
               className="w-full h-full object-cover min-h-[280px] md:min-h-full"
             />

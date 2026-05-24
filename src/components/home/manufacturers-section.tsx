@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { asset } from "@/lib/utils";
 
 const brands = [
-  { name: "Березка", subtitle: "Матрасы премиум-класса", logo: "/brands/berezka.svg" },
-  { name: "Vega", subtitle: "Ортопедические матрасы", logo: "/brands/vega.png" },
-  { name: "Ascona", subtitle: "Мировой лидер сна", logo: "/brands/askona.svg" },
-  { name: "ФММ", subtitle: "Фабрика мягкой мебели", logo: "/brands/fmm.png" },
+  { name: "Березка", subtitle: "Матрасы премиум-класса", logo: asset("/brands/berezka.svg") },
+  { name: "Vega", subtitle: "Ортопедические матрасы", logo: asset("/brands/vega.png") },
+  { name: "Ascona", subtitle: "Мировой лидер сна", logo: asset("/brands/askona.svg") },
+  { name: "ФММ", subtitle: "Фабрика мягкой мебели", logo: asset("/brands/fmm.png") },
 ];
 
 export function ManufacturersSection() {

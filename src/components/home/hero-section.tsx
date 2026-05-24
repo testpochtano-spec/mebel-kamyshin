@@ -53,9 +53,9 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="mt-5 flex items-center gap-2 bg-secondary/10 text-secondary-foreground text-sm font-medium px-4 py-2 rounded-xl border border-secondary/20 w-fit">
-              <Percent className="w-4 h-4" />
-              Скидки пенсионерам, инвалидам и участникам СВО
+            <div className="mt-5 flex items-start gap-2 bg-secondary/10 text-secondary-foreground text-sm font-medium px-4 py-2 rounded-xl border border-secondary/20">
+              <Percent className="w-4 h-4 shrink-0 mt-0.5" />
+              <span className="leading-snug">Скидки пенсионерам, инвалидам и участникам СВО</span>
             </div>
           </motion.div>
 
@@ -73,9 +73,9 @@ export function HeroSection() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl px-6 py-4">
+              <div className="absolute -bottom-4 -left-2 sm:-bottom-5 sm:-left-5 bg-white rounded-2xl shadow-xl px-4 py-3 sm:px-6 sm:py-4 max-w-[calc(100vw-2rem)]">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">Режим работы</p>
-                <p className="text-lg font-bold text-foreground">{BUSINESS.hours}</p>
+                <p className="text-sm sm:text-lg font-bold text-foreground">{BUSINESS.hours}</p>
               </div>
             </div>
           </motion.div>

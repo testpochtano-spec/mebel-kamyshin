@@ -45,47 +45,47 @@ export function CartPageClient() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="bg-white rounded-2xl border border-border p-4 flex gap-4"
+                className="bg-white rounded-2xl border border-border p-3 sm:p-4 flex gap-3 sm:gap-4"
               >
                 <img
                   src={item.images[0]}
                   alt={item.name}
-                  className="w-24 h-24 rounded-xl object-cover shrink-0"
+                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover shrink-0"
                 />
                 <div className="flex-1 min-w-0">
                   <Link
                     href={`/product/${item.slug}`}
-                    className="font-semibold text-foreground hover:text-primary transition-colors no-underline text-sm"
+                    className="font-semibold text-foreground hover:text-primary transition-colors no-underline text-xs sm:text-sm leading-snug"
                   >
                     {item.name}
                   </Link>
                   <p className="text-xs text-muted-foreground mt-0.5">{item.manufacturer}</p>
-                  <div className="flex items-center justify-between mt-3">
+                  <div className="flex items-center justify-between mt-2 sm:mt-3 flex-wrap gap-2">
                     <div className="flex items-center gap-1">
                       <Button
                         variant="outline"
                         size="icon"
-                        className="w-8 h-8 rounded-lg"
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg"
                         onClick={() => updateQty(item.id, item.qty - 1)}
                       >
                         <Minus className="w-3 h-3" />
                       </Button>
-                      <span className="w-8 text-center text-sm font-medium">{item.qty}</span>
+                      <span className="w-6 sm:w-8 text-center text-sm font-medium">{item.qty}</span>
                       <Button
                         variant="outline"
                         size="icon"
-                        className="w-8 h-8 rounded-lg"
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg"
                         onClick={() => updateQty(item.id, item.qty + 1)}
                       >
                         <Plus className="w-3 h-3" />
                       </Button>
                     </div>
-                    <div className="flex items-center gap-4">
-                      <span className="font-bold text-foreground">{formatPrice((item.price || 0) * item.qty)}</span>
+                    <div className="flex items-center gap-2 sm:gap-4">
+                      <span className="font-bold text-foreground text-sm sm:text-base">{formatPrice((item.price || 0) * item.qty)}</span>
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="w-8 h-8 text-muted-foreground hover:text-destructive"
+                        className="w-7 h-7 sm:w-8 sm:h-8 text-muted-foreground hover:text-destructive"
                         onClick={() => removeItem(item.id)}
                       >
                         <Trash2 className="w-4 h-4" />

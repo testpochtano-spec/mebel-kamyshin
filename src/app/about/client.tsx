@@ -3,6 +3,7 @@
 import { BUSINESS } from "@/data/business";
 import { Shield, Ruler, Truck, Star, Heart, Medal, Check, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { asset } from "@/lib/utils";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -33,7 +34,7 @@ export function AboutPageClient() {
       >
         <div className="md:col-span-1 aspect-[4/3] md:aspect-auto">
           <img
-            src="/images/store.jpg"
+            src={asset("/images/store.jpg")}
             alt="Магазин МЕБЕЛЬ в Камышине"
             className="w-full h-full object-cover"
           />
