@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Ruler, Truck, Star, ChevronRight, Percent } from "lucide-react";
 import { BUSINESS } from "@/data/business";
 import { motion } from "framer-motion";
+import { asset } from "@/lib/utils";
 
 const features = [
   { icon: Shield, text: "Срок службы 15 лет" },
@@ -68,8 +69,8 @@ export function HeroSection() {
             <div className="relative">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=800&h=600&fit=crop"
-                  alt="Интерьер с диваном"
+                  src={asset("/images/store.jpg")}
+                  alt="Магазин МЕБЕЛЬ в Камышине"
                   className="w-full h-full object-cover"
                 />
               </div>
