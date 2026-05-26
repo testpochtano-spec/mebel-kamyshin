@@ -66,7 +66,7 @@ export function CatalogPageClient() {
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", damping: 25 }}
-                className="bg-white rounded-t-3xl p-6 w-full max-h-[60vh] overflow-auto"
+                className="bg-white rounded-t-3xl p-6 w-full max-h-[60dvh] overflow-auto"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex items-center justify-between mb-4">

@@ -22,7 +22,7 @@ export function Header() {
   const { count } = useCart();
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
+    <header className="sticky top-0 z-50 bg-white border-b border-border">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="font-heading text-xl font-bold text-foreground no-underline tracking-tight">
           МЕБЕЛЬ

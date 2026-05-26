@@ -164,7 +164,7 @@ export function ProductPageClient({ product }: { product: IProduct }) {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white rounded-3xl w-full max-w-lg max-h-[95vh] md:max-h-[90vh] overflow-y-auto shadow-2xl mx-0 sm:mx-4"
+              className="bg-white rounded-3xl w-full max-w-lg max-h-[95dvh] md:max-h-[90dvh] overflow-y-auto shadow-2xl mx-0 sm:mx-4"
             >
               <div className="flex items-center justify-between p-6 pb-0">
                 <div>

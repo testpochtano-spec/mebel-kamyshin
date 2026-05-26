@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
@@ -14,6 +14,13 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin", "cyrillic"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0F8B6D",
+};
 
 export const metadata: Metadata = {
   title: {
@@ -48,9 +55,9 @@ export default function RootLayout({
   return (
     <html
       lang="ru"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
+      className={`${inter.variable} ${playfair.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-dvh flex flex-col">
         <CartProvider>
           <Header />
           <main className="flex-1">{children}</main>

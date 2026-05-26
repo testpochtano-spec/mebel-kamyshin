@@ -4,11 +4,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const cats = [
-  { name: "Прямые диваны", href: "/catalog?category=divan", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop", count: "12 моделей" },
-  { name: "Угловые диваны", href: "/catalog?category=uglovoy-divan", img: "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=400&h=300&fit=crop", count: "8 моделей" },
-  { name: "Матрасы", href: "/catalog?category=matras", img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&h=300&fit=crop", count: "15 моделей" },
-  { name: "Кровати", href: "/catalog?category=krovat", img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=300&fit=crop", count: "6 моделей" },
-  { name: "На заказ", href: "/catalog?custom=true", img: "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=400&h=300&fit=crop", count: "Индивидуально" },
+  { name: "Прямые диваны", href: "/catalog?category=divan", gradient: "from-amber-700 via-amber-600 to-amber-800", count: "12 моделей" },
+  { name: "Угловые диваны", href: "/catalog?category=uglovoy-divan", gradient: "from-emerald-700 via-emerald-600 to-emerald-800", count: "8 моделей" },
+  { name: "Матрасы", href: "/catalog?category=matras", gradient: "from-blue-700 via-blue-600 to-blue-800", count: "15 моделей" },
+  { name: "Кровати", href: "/catalog?category=krovat", gradient: "from-slate-700 via-slate-600 to-slate-800", count: "6 моделей" },
+  { name: "На заказ", href: "/catalog?custom=true", gradient: "from-rose-700 via-rose-600 to-rose-800", count: "Индивидуально" },
 ];
 
 export function CategoriesSection() {
@@ -31,8 +31,12 @@ export function CategoriesSection() {
                 href={cat.href}
                 className="group block bg-background rounded-2xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 no-underline"
               >
-                <div className="aspect-square overflow-hidden">
-                  <img src={cat.img} alt={cat.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div className={`aspect-square overflow-hidden bg-gradient-to-br ${cat.gradient}`}>
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-white/90 text-5xl font-heading font-bold opacity-20 group-hover:opacity-30 transition-opacity">
+                      {cat.name.charAt(0)}
+                    </span>
+                  </div>
                 </div>
                 <div className="p-4 text-center">
                   <h3 className="font-heading text-base font-semibold text-foreground group-hover:text-primary transition-colors">{cat.name}</h3>

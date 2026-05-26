@@ -88,5 +88,11 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+    -webkit-text-size-adjust: 100%;
+  }
+  /* iOS Safari smooth scrolling for overflow containers */
+  .overflow-y-auto,
+  .overflow-auto {
+    -webkit-overflow-scrolling: touch;
   }
 }
