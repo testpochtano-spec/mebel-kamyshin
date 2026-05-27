@@ -75,23 +75,32 @@ export function CertificatesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-background rounded-2xl border border-border p-5 flex items-center justify-between hover:border-primary/30 hover:shadow-md transition-all"
+                className={`rounded-2xl border p-5 hover:border-primary/30 hover:shadow-md transition-all ${
+                  i === 0 ? "bg-gradient-to-br from-primary/10 to-primary/5 border-primary/30 sm:col-span-2 md:col-span-2" : "bg-background border-border"
+                }`}
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <BookOpen className="w-5 h-5 text-primary" />
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-start gap-3">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                      i === 0 ? "bg-primary text-primary-foreground" : "bg-primary/10"
+                    }`}>
+                      <BookOpen className={`w-5 h-5 ${i === 0 ? "text-primary-foreground" : "text-primary"}`} />
+                    </div>
+                    <div>
+                      <span className="font-medium text-foreground text-sm block">{cat.title}</span>
+                      {cat.desc && <span className="text-xs text-muted-foreground mt-1 block">{cat.desc}</span>}
+                    </div>
                   </div>
-                  <span className="font-medium text-foreground text-sm">{cat.title}</span>
+                  <Button
+                    variant={i === 0 ? "default" : "ghost"}
+                    size="sm"
+                    className="rounded-xl gap-1 shrink-0"
+                    render={<a href={asset(cat.file)} target="_blank" rel="noopener noreferrer" />}
+                    nativeButton={false}
+                  >
+                    <Download className="w-4 h-4" /> {i === 0 ? "Скачать" : "PDF"}
+                  </Button>
                 </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="rounded-xl gap-1 text-muted-foreground"
-                  render={<a href={asset(cat.file)} target="_blank" rel="noopener noreferrer" />}
-                  nativeButton={false}
-                >
-                  <Download className="w-4 h-4" /> PDF
-                </Button>
               </motion.div>
             ))}
           </div>
