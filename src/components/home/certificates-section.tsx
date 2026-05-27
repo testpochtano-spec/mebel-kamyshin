@@ -4,6 +4,7 @@ import { BUSINESS } from "@/data/business";
 import { Award, BookOpen, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { asset } from "@/lib/utils";
 
 export function CertificatesSection() {
   return (
@@ -86,7 +87,7 @@ export function CertificatesSection() {
                   variant="ghost"
                   size="sm"
                   className="rounded-xl gap-1 text-muted-foreground"
-                  render={<a href={cat.file} target="_blank" rel="noopener noreferrer" />}
+                  render={<a href={asset(cat.file)} target="_blank" rel="noopener noreferrer" />}
                   nativeButton={false}
                 >
                   <Download className="w-4 h-4" /> PDF
