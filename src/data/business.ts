@@ -63,8 +63,8 @@ export const BUSINESS = {
 
   catalogs: [
     { title: "📘 Полный каталог мебели", file: "/catalogs/mebel-katalog.pdf", desc: "Диваны, матрасы, корпусная мебель — все категории в одном каталоге" },
-    { title: "Диваны и кресла", file: "/catalogs/divany.pdf" },
-    { title: "Кровати и матрасы", file: "/catalogs/krovati.pdf" },
-    { title: "Корпусная мебель", file: "/catalogs/korpus.pdf" },
+    { title: "Диваны и кресла", file: "/catalogs/divany.pdf", desc: "" },
+    { title: "Кровати и матрасы", file: "/catalogs/krovati.pdf", desc: "" },
+    { title: "Корпусная мебель", file: "/catalogs/korpus.pdf", desc: "" },
   ],
 } as const;
