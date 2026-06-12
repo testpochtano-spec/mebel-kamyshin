@@ -34,7 +34,7 @@ export function AboutPageClient() {
       >
         <div className="md:col-span-1 aspect-[4/3] md:aspect-auto">
           <img
-            src={asset("/images/store.jpg")}
+            src={asset("/showroom/store-exterior-real.jpg")}
             alt="Магазин МЕБЕЛЬ в Камышине"
             className="w-full h-full object-cover"
           />
@@ -116,7 +116,7 @@ export function AboutPageClient() {
           Дополнительные услуги
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {BUSINESS.extraServices.map((s, i) => (
+          {BUSINESS.extraServices.map((s) => (
             <div key={s} className="flex items-start gap-3 bg-white rounded-xl p-4 border border-border">
               <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
               <span className="text-sm text-foreground">{s}</span>

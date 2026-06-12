@@ -1,7 +1,7 @@
 "use client";
 
 import { BUSINESS } from "@/data/business";
-import { Phone, MapPin, Clock, ArrowRight, ExternalLink } from "lucide-react";
+import { Mail, MessageCircle, Phone, MapPin, Clock, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -13,8 +13,8 @@ export function AboutContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* About */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
@@ -39,11 +39,11 @@ export function AboutContactSection() {
 
           {/* Contacts */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="bg-background rounded-3xl p-8 border border-border"
+            className="bg-background rounded-3xl p-5 sm:p-8 border border-border"
           >
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">Контакты</h2>
             <div className="space-y-5">
@@ -59,6 +59,30 @@ export function AboutContactSection() {
                   <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{BUSINESS.phone}</p>
                 </div>
               </a>
+
+              <a
+                href={`mailto:${BUSINESS.email}`}
+                className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-border hover:border-primary/30 transition-colors no-underline group"
+              >
+                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Почта для заявок</p>
+                  <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{BUSINESS.email}</p>
+                </div>
+              </a>
+
+              <div className="flex items-start gap-4 p-4 bg-white rounded-2xl border border-border">
+                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+                  <MessageCircle className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Мессенджеры</p>
+                  <p className="font-semibold text-foreground">Telegram, MAX, WhatsApp</p>
+                  <p className="text-xs text-muted-foreground mt-1">Можно написать по номеру {BUSINESS.phone}</p>
+                </div>
+              </div>
 
               <div className="flex items-start gap-4 p-4 bg-white rounded-2xl border border-border">
                 <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">

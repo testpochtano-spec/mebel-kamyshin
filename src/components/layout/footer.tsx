@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BUSINESS } from "@/data/business";
-import { Phone, MapPin, Clock } from "lucide-react";
+import { Mail, MessageCircle, Phone, MapPin, Clock } from "lucide-react";
 
 export function Footer() {
   return (
@@ -21,7 +21,9 @@ export function Footer() {
             <Link href="/catalog?category=divan" className="hover:text-white transition-colors no-underline">Диваны</Link>
             <Link href="/catalog?category=matras" className="hover:text-white transition-colors no-underline">Матрасы</Link>
             <Link href="/catalog?category=krovat" className="hover:text-white transition-colors no-underline">Кровати</Link>
+            <Link href="/catalog?category=korpusnaya" className="hover:text-white transition-colors no-underline">Корпусная мебель</Link>
             <Link href="/delivery" className="hover:text-white transition-colors no-underline">Доставка и сборка</Link>
+            <Link href="/catalog#request" className="hover:text-white transition-colors no-underline">Получить расчёт</Link>
             <Link href="/about" className="hover:text-white transition-colors no-underline">О магазине</Link>
             <Link href="/contacts" className="hover:text-white transition-colors no-underline">Контакты</Link>
           </nav>
@@ -33,6 +35,13 @@ export function Footer() {
             <a href={`tel:${BUSINESS.phone.replace(/-/g, "")}`} className="flex items-center gap-2 hover:text-white transition-colors no-underline">
               <Phone className="w-4 h-4" /> {BUSINESS.phone}
             </a>
+            <a href={`mailto:${BUSINESS.email}`} className="flex items-center gap-2 hover:text-white transition-colors no-underline">
+              <Mail className="w-4 h-4" /> {BUSINESS.email}
+            </a>
+            <div className="flex items-start gap-2">
+              <MessageCircle className="w-4 h-4 mt-0.5 shrink-0" />
+              <span>Telegram, MAX, WhatsApp по номеру</span>
+            </div>
             <div className="flex items-start gap-2">
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
               <span>{BUSINESS.address}</span>

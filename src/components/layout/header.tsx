@@ -3,9 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCart } from "@/hooks/use-cart";
 import { BUSINESS } from "@/data/business";
-import { Menu, X, Phone, ShoppingCart } from "lucide-react";
+import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const NAV = [
@@ -19,7 +18,6 @@ const NAV = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const { count } = useCart();
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border">
@@ -52,14 +50,15 @@ export function Header() {
             {BUSINESS.phone}
           </a>
 
-          <Link href="/cart" className="relative p-2 text-muted-foreground hover:text-primary transition-colors no-underline">
-            <ShoppingCart className="w-5 h-5" />
-            {count > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 bg-primary text-primary-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium">
-                {count}
-              </span>
-            )}
-          </Link>
+          <Button
+            size="sm"
+            nativeButton={false}
+            className="hidden sm:inline-flex rounded-xl gap-1.5"
+            render={<Link href="/catalog#request" />}
+          >
+            <MessageCircle className="w-4 h-4" />
+            Подбор
+          </Button>
 
           <Button
             variant="ghost"
@@ -90,6 +89,13 @@ export function Header() {
           <a href={`tel:${BUSINESS.phone.replace(/-/g, "")}`} className="text-sm text-primary font-medium no-underline flex items-center gap-1.5">
             <Phone className="w-4 h-4" /> {BUSINESS.phone}
           </a>
+          <Link
+            href="/catalog#request"
+            onClick={() => setOpen(false)}
+            className="text-sm font-medium text-primary no-underline flex items-center gap-1.5"
+          >
+            <MessageCircle className="w-4 h-4" /> Получить подбор
+          </Link>
         </nav>
       )}
     </header>

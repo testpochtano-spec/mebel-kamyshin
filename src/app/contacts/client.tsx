@@ -1,7 +1,7 @@
 "use client";
 
 import { BUSINESS } from "@/data/business";
-import { Phone, MapPin, Clock, Navigation, Store } from "lucide-react";
+import { Mail, MessageCircle, Phone, MapPin, Clock, Navigation, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { asset } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -33,6 +33,17 @@ export function ContactsPageClient() {
               label: "Дополнительный",
               value: BUSINESS.phone2,
               href: `tel:${BUSINESS.phone2.replace(/-/g, "")}`,
+            },
+            {
+              icon: Mail,
+              label: "Почта для заявок",
+              value: BUSINESS.email,
+              href: `mailto:${BUSINESS.email}`,
+            },
+            {
+              icon: MessageCircle,
+              label: "Мессенджеры",
+              value: `Telegram, MAX, WhatsApp по номеру ${BUSINESS.phone}`,
             },
             { icon: MapPin, label: "Адрес", value: BUSINESS.address },
             { icon: Clock, label: "Режим работы", value: BUSINESS.hours },
@@ -66,6 +77,15 @@ export function ContactsPageClient() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Button size="lg" nativeButton={false} className="rounded-2xl text-base px-8 h-12 gap-2" render={<a href={`tel:${BUSINESS.phone.replace(/-/g, "")}`} />}>
                 <Phone className="w-5 h-5" /> Позвонить
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              nativeButton={false}
+              className="rounded-2xl text-base px-8 h-12 gap-2"
+              render={<a href={`mailto:${BUSINESS.email}`} />}
+            >
+              <Mail className="w-5 h-5" /> Написать
             </Button>
           </div>
         </div>
@@ -116,7 +136,7 @@ export function ContactsPageClient() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 bg-white rounded-3xl border border-border overflow-hidden shadow-sm">
           <div className="md:col-span-3">
             <img
-              src={asset("/images/store.jpg")}
+              src={asset("/showroom/store-exterior-real.jpg")}
               alt="Магазин МЕБЕЛЬ в Камышине"
               className="w-full h-full object-cover min-h-[280px] md:min-h-full"
             />
@@ -140,6 +160,16 @@ export function ContactsPageClient() {
                 <a href={`tel:${BUSINESS.phone.replace(/-/g, "")}`} className="font-medium text-foreground hover:text-primary transition-colors no-underline">
                   {BUSINESS.phone}
                 </a>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Mail className="w-4 h-4 text-primary shrink-0" />
+                <a href={`mailto:${BUSINESS.email}`} className="font-medium text-foreground hover:text-primary transition-colors no-underline">
+                  {BUSINESS.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <MessageCircle className="w-4 h-4 text-primary shrink-0" />
+                <span>Telegram, MAX, WhatsApp по номеру</span>
               </div>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">

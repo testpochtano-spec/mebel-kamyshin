@@ -3,7 +3,6 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { CartProvider } from "@/hooks/use-cart";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,11 +23,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "МЕБЕЛЬ — Камышин | Фабричная мягкая и корпусная мебель",
+    default: "МЕБЕЛЬ — Камышин | Подбор фабричной мебели",
     template: "%s | МЕБЕЛЬ — Камышин",
   },
   description:
-    "Добротная фабричная мягкая и корпусная мебель от лучших российских производителей. Диваны, кровати, матрасы — по наличию и на заказ в Камышине.",
+    "Подбор фабричной мягкой и корпусной мебели в Камышине. Каталоги производителей, примеры из магазина, расчёт цены, доставки и сроков.",
   keywords: [
     "мебель Камышин",
     "купить диван Камышин",
@@ -41,9 +40,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ru_RU",
     siteName: "МЕБЕЛЬ — Камышин",
-    title: "МЕБЕЛЬ — Камышин | Фабричная мягкая и корпусная мебель",
+    title: "МЕБЕЛЬ — Камышин | Подбор фабричной мебели",
     description:
-      "Диваны, кровати, матрасы от лучших российских производителей. Доставка по Камышину и области.",
+      "Каталоги производителей, примеры мебели из магазина, расчёт цены и доставки по Камышину и области.",
   },
 };
 
@@ -58,11 +57,9 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} antialiased`}
     >
       <body className="min-h-dvh flex flex-col">
-        <CartProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </CartProvider>
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

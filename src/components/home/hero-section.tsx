@@ -8,10 +8,10 @@ import { motion } from "framer-motion";
 import { asset } from "@/lib/utils";
 
 const features = [
-  { icon: Shield, text: "Срок службы 15 лет" },
-  { icon: Star, text: "Более 100 клиентов" },
+  { icon: Shield, text: "Российские фабрики" },
+  { icon: Star, text: "Каталоги и образцы" },
   { icon: Truck, text: "Доставка и сборка" },
-  { icon: Ruler, text: "Индивидуальные размеры" },
+  { icon: Ruler, text: "Подбор под размеры" },
 ];
 
 export function HeroSection() {
@@ -33,13 +33,13 @@ export function HeroSection() {
               <span className="block text-primary mt-2">для вашего дома</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
-              Фабричная мягкая и корпусная мебель от лучших российских производителей.
-              Диваны, кровати, матрасы — в наличии и на заказ.
+              Фабричная мягкая и корпусная мебель от российских производителей.
+              Выберите модель из каталогов или приезжайте в магазин — поможем рассчитать цену, сроки и доставку.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button size="lg" nativeButton={false} className="rounded-2xl text-base px-8 h-12" render={<Link href="/catalog" />}>
-                Смотреть каталог <ChevronRight className="w-5 h-5 ml-1" />
+              <Button size="lg" nativeButton={false} className="rounded-2xl text-base px-8 h-12" render={<Link href="/catalog#request" />}>
+                Получить подбор <ChevronRight className="w-5 h-5 ml-1" />
               </Button>
               <Button variant="outline" size="lg" nativeButton={false} className="rounded-2xl text-base px-8 h-12" render={<Link href="/about" />}>
                 О магазине <ArrowRight className="w-4 h-4 ml-1" />
@@ -69,7 +69,7 @@ export function HeroSection() {
             <div className="relative">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src={asset("/images/store.jpg")}
+                  src={asset("/showroom/store-exterior-real.jpg")}
                   alt="Магазин МЕБЕЛЬ в Камышине"
                   className="w-full h-full object-cover"
                 />

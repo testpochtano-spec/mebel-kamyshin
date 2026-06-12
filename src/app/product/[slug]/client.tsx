@@ -3,129 +3,109 @@
 import { useState } from "react";
 import Link from "next/link";
 import { IProduct } from "@/types/product";
-import { useCart } from "@/hooks/use-cart";
 import { Button } from "@/components/ui/button";
 import { OrderForm } from "@/components/shared/order-form";
 import { PRODUCTS } from "@/data/products";
 import { ProductCard } from "@/components/catalog/product-card";
 import { BUSINESS } from "@/data/business";
-import { ShoppingCart, Phone, ChevronLeft, Check, Truck, Shield, Clock, Ruler, ArrowRight, Star, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Phone, ChevronLeft, Check, Truck, Shield, Clock, Ruler, ArrowRight, Star, X, MessageCircle } from "lucide-react";
+import { cn, asset } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 
 function formatPrice(n: number) {
-  return n ? `${n.toLocaleString("ru-RU")} ₽` : "Цена по запросу";
+  return n ? `от ${n.toLocaleString("ru-RU")} ₽` : "Цена по запросу";
+}
+
+function imageSrc(src: string) {
+  return src.startsWith("/") ? asset(src) : src;
 }
 
 export function ProductPageClient({ product }: { product: IProduct }) {
   const [activeImg, setActiveImg] = useState(0);
-  const { addItem } = useCart();
-  const [added, setAdded] = useState(false);
   const [showForm, setShowForm] = useState(false);
-
-  const handleAdd = () => {
-    addItem(product);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1500);
-  };
 
   const related = PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-      {/* Breadcrumb */}
       <Link
         href="/catalog"
         className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors no-underline mb-8"
       >
-        <ChevronLeft className="w-4 h-4" /> Назад в каталог
+        <ChevronLeft className="w-4 h-4" /> Назад в витрину
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-        {/* Gallery */}
         <div>
           <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-background border border-border mb-4">
             <img
-              src={product.images[activeImg] || product.images[0]}
+              src={imageSrc(product.images[activeImg] || product.images[0])}
               alt={product.name}
               className="w-full h-full object-cover"
             />
           </div>
           {product.images.length > 1 && (
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap">
               {product.images.map((img, i) => (
                 <button
-                  key={i}
+                  key={img}
                   onClick={() => setActiveImg(i)}
                   className={cn(
-                    "w-20 h-16 rounded-xl overflow-hidden border-2 transition-colors cursor-pointer",
+                    "w-20 h-16 rounded-xl overflow-hidden border-2 transition-colors cursor-pointer bg-background",
                     i === activeImg ? "border-primary" : "border-border hover:border-primary/40"
                   )}
+                  aria-label={`Показать фото ${i + 1}`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
+                  <img src={imageSrc(img)} alt="" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
           )}
         </div>
 
-        {/* Info */}
         <div>
           <span className="text-xs text-muted-foreground uppercase tracking-wider">{product.manufacturer}</span>
           <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-1">{product.name}</h1>
 
-          <div className="mt-6 flex items-baseline gap-3">
-            {product.price > 0 ? (
-              <>
-                <span className="text-3xl font-bold text-foreground">{formatPrice(product.price)}</span>
-                {product.oldPrice && (
-                  <span className="text-lg text-muted-foreground line-through">{formatPrice(product.oldPrice)}</span>
-                )}
-              </>
-            ) : (
-              <span className="text-2xl font-semibold text-primary">{formatPrice(0)}</span>
-            )}
+          <div className="mt-6">
+            <span className="text-2xl md:text-3xl font-bold text-primary">{formatPrice(product.price)}</span>
+            <p className="text-sm text-muted-foreground mt-2">
+              Точная стоимость зависит от модели, ткани, размера, наличия на фабрике и доставки.
+            </p>
           </div>
 
-          {/* Status */}
-          <div className="mt-4 flex gap-3">
-            {product.inStock ? (
-              <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 text-sm px-3 py-1.5 rounded-full font-medium">
-                <Check className="w-3.5 h-3.5" /> В наличии
-              </span>
-            ) : (
-              <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-sm px-3 py-1.5 rounded-full font-medium">
-                <Clock className="w-3.5 h-3.5" /> Под заказ, от 14 дней
-              </span>
-            )}
+          <div className="mt-4 flex gap-3 flex-wrap">
+            <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-sm px-3 py-1.5 rounded-full font-medium">
+              <Clock className="w-3.5 h-3.5" /> Наличие уточняется
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 text-sm px-3 py-1.5 rounded-full font-medium">
+              <Check className="w-3.5 h-3.5" /> Возможен подбор по каталогам
+            </span>
           </div>
 
           <p className="mt-6 text-muted-foreground leading-relaxed">{product.description}</p>
 
-          {/* CTA buttons */}
           <div className="mt-8 flex flex-wrap gap-3">
-            {product.inStock ? (
-              <Button size="lg" onClick={handleAdd} className="rounded-2xl text-base px-8 h-12 gap-2" variant={added ? "secondary" : "default"}>
-                {added ? <Check className="w-5 h-5" /> : <ShoppingCart className="w-5 h-5" />}
-                {added ? "Добавлено" : "В корзину"}
-              </Button>
-            ) : (
-              <Button size="lg" onClick={() => setShowForm(true)} className="rounded-2xl text-base px-8 h-12 gap-2">
-                <Ruler className="w-5 h-5" /> Оформить заказ
-              </Button>
-            )}
-            <Button size="lg" variant="outline" nativeButton={false} className="rounded-2xl text-base px-8 h-12 gap-2" render={<a href={`tel:${BUSINESS.phone.replace(/-/g, "")}`} />}>
-                <Phone className="w-5 h-5" /> {BUSINESS.phone}
-              </Button>
+            <Button size="lg" onClick={() => setShowForm(true)} className="rounded-2xl text-base px-8 h-12 gap-2">
+              <MessageCircle className="w-5 h-5" /> Получить расчёт
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              nativeButton={false}
+              className="rounded-2xl text-base px-8 h-12 gap-2"
+              render={<a href={`tel:${BUSINESS.phone.replace(/\D/g, "")}`} />}
+            >
+              <Phone className="w-5 h-5" /> {BUSINESS.phone}
+            </Button>
           </div>
 
-          {/* Trust signals */}
           <div className="mt-8 grid grid-cols-2 gap-3">
             {[
-              { icon: Truck, text: "Доставка по Камышину, Волгоградской и Саратовской обл." },
-              { icon: Shield, text: "Срок службы 15 лет" },
-              { icon: Ruler, text: "Индивидуальные размеры" },
-              { icon: Star, text: "Гарантия качества" },
+              { icon: Truck, text: "Доставка по Камышину и области" },
+              { icon: Shield, text: "Работаем с российскими фабриками" },
+              { icon: Ruler, text: "Подбор размеров и обивки" },
+              { icon: Star, text: "Можно выбрать по каталогам" },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Icon className="w-4 h-4 text-primary shrink-0" /> {text}
@@ -135,9 +115,8 @@ export function ProductPageClient({ product }: { product: IProduct }) {
         </div>
       </div>
 
-      {/* Specs table */}
       <div className="mt-16">
-        <h2 className="font-heading text-2xl font-bold text-foreground mb-6">Характеристики</h2>
+        <h2 className="font-heading text-2xl font-bold text-foreground mb-6">Что уточним при расчёте</h2>
         <div className="bg-white rounded-2xl border border-border overflow-hidden">
           <div className="divide-y divide-border">
             {Object.entries(product.specs).map(([key, val]) => (
@@ -150,7 +129,6 @@ export function ProductPageClient({ product }: { product: IProduct }) {
         </div>
       </div>
 
-      {/* Order form modal */}
       <AnimatePresence>
         {showForm && (
           <motion.div
@@ -168,12 +146,13 @@ export function ProductPageClient({ product }: { product: IProduct }) {
             >
               <div className="flex items-center justify-between p-6 pb-0">
                 <div>
-                  <p className="text-sm text-muted-foreground">Заказ товара под заказ</p>
+                  <p className="text-sm text-muted-foreground">Расчёт по примеру</p>
                   <p className="font-heading text-lg font-bold text-foreground">{product.name}</p>
                 </div>
                 <button
                   onClick={() => setShowForm(false)}
                   className="w-10 h-10 rounded-xl bg-background flex items-center justify-center hover:bg-border transition-colors cursor-pointer shrink-0"
+                  aria-label="Закрыть"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -181,7 +160,9 @@ export function ProductPageClient({ product }: { product: IProduct }) {
               <div className="p-6">
                 <OrderForm
                   title=""
-                  subtitle="Заполните форму — мы свяжемся для уточнения размеров, цвета и сроков"
+                  context={product.name}
+                  subtitle="Опишите размер, цвет или пожелания — текст откроется готовым письмом."
+                  defaultMessage={`Хочу уточнить цену и наличие: ${product.name}.`}
                 />
               </div>
             </motion.div>
@@ -189,13 +170,12 @@ export function ProductPageClient({ product }: { product: IProduct }) {
         )}
       </AnimatePresence>
 
-      {/* Related products */}
       {related.length > 0 && (
         <div className="mt-20">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="font-heading text-2xl font-bold text-foreground">Похожие товары</h2>
+            <h2 className="font-heading text-2xl font-bold text-foreground">Похожие примеры</h2>
             <Button variant="ghost" nativeButton={false} className="gap-1 text-primary" render={<Link href="/catalog" />}>
-              Все товары <ArrowRight className="w-4 h-4" />
+              Вся витрина <ArrowRight className="w-4 h-4" />
             </Button>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

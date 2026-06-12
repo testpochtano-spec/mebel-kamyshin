@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { CatalogPageClient } from "./client";
 
 export const metadata: Metadata = {
-  title: "Каталог мебели",
+  title: "Каталоги и подбор мебели",
   description:
-    "Каталог фабричной мебели в Камышине. Диваны, угловые диваны, кровати, матрасы — по наличию и на заказ. Доставка и сборка.",
+    "Каталоги фабричной мебели и заявка на подбор в Камышине. Диваны, кровати, матрасы, корпусная мебель — расчёт цены, доставки и сроков.",
 };
 
 export default function CatalogPage() {
-  return <CatalogPageClient />;
+  return (
+    <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-16 text-muted-foreground">Загружаем каталог...</div>}>
+      <CatalogPageClient />
+    </Suspense>
+  );
 }

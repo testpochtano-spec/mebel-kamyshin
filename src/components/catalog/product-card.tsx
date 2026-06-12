@@ -2,43 +2,31 @@
 
 import Link from "next/link";
 import { IProduct } from "@/types/product";
-import { useCart } from "@/hooks/use-cart";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Check } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, MessageCircle } from "lucide-react";
+import { asset } from "@/lib/utils";
+
+function imageSrc(src: string) {
+  return src.startsWith("/") ? asset(src) : src;
+}
+
+function formatPrice(n: number) {
+  return n > 0 ? `от ${n.toLocaleString("ru-RU")} ₽` : "Цена по запросу";
+}
 
 export function ProductCard({ product }: { product: IProduct }) {
-  const { addItem } = useCart();
-  const [added, setAdded] = useState(false);
-
-  const fmt = (n: number) =>
-    n ? `${n.toLocaleString("ru-RU")} ₽` : "Цена по запросу";
-
-  const handleAdd = () => {
-    addItem(product);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1200);
-  };
-
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden border border-border hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
-      <Link href={`/product/${product.slug}`} className="block relative overflow-hidden aspect-[4/3] no-underline">
+    <article className="group bg-white rounded-2xl overflow-hidden border border-border hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+      <Link href={`/product/${product.slug}`} className="block relative overflow-hidden aspect-[4/3] no-underline bg-background">
         <img
-          src={product.images[0]}
+          src={imageSrc(product.images[0])}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
-        {!product.inStock && (
-          <span className="absolute top-3 left-3 bg-foreground/80 text-white text-xs px-3 py-1.5 rounded-full font-medium">
-            Под заказ
-          </span>
-        )}
-        {product.oldPrice && product.inStock && (
-          <span className="absolute top-3 left-3 bg-secondary text-foreground text-xs px-3 py-1.5 rounded-full font-semibold">
-            Скидка
-          </span>
-        )}
+        <span className="absolute top-3 left-3 bg-white/90 text-foreground text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
+          Подбор и расчёт
+        </span>
       </Link>
 
       <div className="p-5">
@@ -49,32 +37,24 @@ export function ProductCard({ product }: { product: IProduct }) {
         </Link>
         <p className="text-xs text-muted-foreground mb-4">{product.manufacturer}</p>
 
-        <div className="flex items-end justify-between">
+        <div className="flex items-end justify-between gap-3">
           <div>
-            {product.price > 0 ? (
-              <>
-                <span className="text-xl font-bold text-foreground">{fmt(product.price)}</span>
-                {product.oldPrice && (
-                  <span className="ml-2 text-sm text-muted-foreground line-through">{fmt(product.oldPrice)}</span>
-                )}
-              </>
-            ) : (
-              <span className="text-sm font-medium text-primary">{fmt(0)}</span>
-            )}
+            <span className="text-sm font-semibold text-primary">{formatPrice(product.price)}</span>
+            <p className="text-xs text-muted-foreground mt-1">Наличие и сроки уточняются</p>
           </div>
-          {product.inStock && (
-            <Button
-              size="sm"
-              onClick={handleAdd}
-              variant={added ? "default" : "secondary"}
-              className="rounded-xl gap-1.5"
-            >
-              {added ? <Check className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}
-              {added ? "В корзине" : "В корзину"}
-            </Button>
-          )}
+          <Button
+            size="sm"
+            variant="secondary"
+            nativeButton={false}
+            className="rounded-xl gap-1.5 shrink-0"
+            render={<Link href={`/product/${product.slug}`} />}
+          >
+            <MessageCircle className="w-4 h-4" />
+            Уточнить
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Button>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

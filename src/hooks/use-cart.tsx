@@ -33,11 +33,6 @@ function loadCart(): CartItem[] {
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>(loadCart);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const addItem = useCallback((product: IProduct) => {
     setItems((prev) => {
@@ -67,10 +62,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const count = items.reduce((s, i) => s + i.qty, 0);
 
   useEffect(() => {
-    if (mounted) {
+    if (typeof window !== "undefined") {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
     }
-  }, [items, mounted]);
+  }, [items]);
 
   return (
     <CartContext.Provider value={{ items, addItem, removeItem, updateQty, total, count, clearCart }}>
