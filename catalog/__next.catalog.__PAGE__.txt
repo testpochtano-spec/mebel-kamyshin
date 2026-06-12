@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[35698,["/mebel-kamyshin/_next/static/chunks/0f8fnqxt1~n._.js","/mebel-kamyshin/_next/static/chunks/0d3shmwh5_nmn.js","/mebel-kamyshin/_next/static/chunks/0wil~9dra~~x5.js","/mebel-kamyshin/_next/static/chunks/0d4m907_byejp.js","/mebel-kamyshin/_next/static/chunks/0getnx--xxdy9.js"],"CatalogPageClient"]
-3:I[97367,["/mebel-kamyshin/_next/static/chunks/0f8fnqxt1~n._.js","/mebel-kamyshin/_next/static/chunks/0d3shmwh5_nmn.js","/mebel-kamyshin/_next/static/chunks/0wil~9dra~~x5.js"],"OutletBoundary"]
-4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","script","script-0",{"src":"/mebel-kamyshin/_next/static/chunks/0d4m907_byejp.js","async":true}],["$","script","script-1",{"src":"/mebel-kamyshin/_next/static/chunks/0getnx--xxdy9.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"9qwF-90ZYpZzaXiFeN_jn"}
+2:"$Sreact.suspense"
+3:I[35698,["/mebel-kamyshin/_next/static/chunks/00t51kjnd7pi6.js","/mebel-kamyshin/_next/static/chunks/0d3shmwh5_nmn.js","/mebel-kamyshin/_next/static/chunks/0bxje~dann4p~.js","/mebel-kamyshin/_next/static/chunks/03ot-l01kjx.h.js","/mebel-kamyshin/_next/static/chunks/0getnx--xxdy9.js"],"CatalogPageClient"]
+4:I[97367,["/mebel-kamyshin/_next/static/chunks/00t51kjnd7pi6.js","/mebel-kamyshin/_next/static/chunks/0d3shmwh5_nmn.js","/mebel-kamyshin/_next/static/chunks/0bxje~dann4p~.js"],"OutletBoundary"]
+0:{"rsc":["$","$1","c",{"children":[["$","$2",null,{"fallback":["$","div",null,{"className":"max-w-7xl mx-auto px-4 py-16 text-muted-foreground","children":"Загружаем каталог..."}],"children":["$","$L3",null,{}]}],[["$","script","script-0",{"src":"/mebel-kamyshin/_next/static/chunks/03ot-l01kjx.h.js","async":true}],["$","script","script-1",{"src":"/mebel-kamyshin/_next/static/chunks/0getnx--xxdy9.js","async":true}]],["$","$L4",null,{"children":["$","$2",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"3AXhrJb8_A6D8XWlxzlqW"}
 5:null
