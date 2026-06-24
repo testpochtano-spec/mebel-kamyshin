@@ -9,18 +9,18 @@ import { Button } from "@/components/ui/button";
 const steps = [
   {
     icon: BookOpen,
-    title: "Выберите направление",
+    title: "Выберите вариант",
     text: "Откройте каталог или покажите фото мебели, которая понравилась.",
   },
   {
     icon: Ruler,
-    title: "Передайте размеры",
-    text: "Можно приехать в магазин или отправить размеры и пожелания в мессенджер.",
+    title: "Напишите нам",
+    text: "Пришлите размеры, цвет и пожелания в мессенджер или позвоните.",
   },
   {
     icon: MessageCircle,
-    title: "Получите расчёт",
-    text: "Уточним фабрику, комплектацию, сроки, доставку и итоговую стоимость.",
+    title: "Согласуем заказ",
+    text: "Подскажем варианты, материалы, сроки и доставку.",
   },
 ];
 
@@ -31,14 +31,14 @@ export function HowToOrderSection() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
           <div>
             <span className="inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-              Простая схема заказа
+              Как это работает
             </span>
             <h2 className="mt-4 font-heading text-3xl font-bold leading-tight text-foreground md:text-4xl">
-              Не нужно разбираться в фабриках самому
+              Выберите мебель, а мы поможем с заказом
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              Клиент выбирает направление или показывает пример, а магазин подбирает подходящую фабрику,
-              материалы и комплектацию без цен на сайте.
+              Откройте каталог, покажите фото или расскажите, что нужно для дома.
+              Мы подскажем подходящие варианты и объясним, как оформить заказ.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Button size="lg" nativeButton={false} className="h-12 rounded-2xl px-7 gap-2" render={<Link href="/catalog" />}>
