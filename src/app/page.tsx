@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/home/hero-section";
 import { CategoriesSection } from "@/components/home/categories-section";
+import { HowToOrderSection } from "@/components/home/how-to-order-section";
 import { MaterialsSection } from "@/components/home/materials-section";
-import { PopularProductsSection } from "@/components/home/popular-products-section";
 import { AdvantagesSection } from "@/components/home/advantages-section";
-import { ManufacturersSection } from "@/components/home/manufacturers-section";
-import { CertificatesSection } from "@/components/home/certificates-section";
+import { PartnerStripSection } from "@/components/home/partner-strip-section";
 import { AboutContactSection } from "@/components/home/about-contact-section";
 
 export const metadata: Metadata = {
@@ -26,11 +25,10 @@ export default function HomePage() {
     <>
       <HeroSection />
       <CategoriesSection />
+      <HowToOrderSection />
       <MaterialsSection />
-      <PopularProductsSection />
       <AdvantagesSection />
-      <ManufacturersSection />
-      <CertificatesSection />
+      <PartnerStripSection />
       <AboutContactSection />
     </>
   );

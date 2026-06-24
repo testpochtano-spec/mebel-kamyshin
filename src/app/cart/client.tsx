@@ -18,7 +18,7 @@ export function CartPageClient() {
           </h1>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
             Сейчас сайт работает как витрина и каталог для подбора. Напишите, какая мебель нужна,
-            а магазин уточнит цену, наличие, сроки изготовления и доставку.
+            а магазин уточнит наличие, комплектацию, сроки изготовления и доставку.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">

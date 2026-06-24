@@ -12,10 +12,6 @@ import { Phone, ChevronLeft, Check, Truck, Shield, Clock, Ruler, ArrowRight, Sta
 import { cn, asset } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 
-function formatPrice(n: number) {
-  return n ? `от ${n.toLocaleString("ru-RU")} ₽` : "Цена по запросу";
-}
-
 function imageSrc(src: string) {
   return src.startsWith("/") ? asset(src) : src;
 }
@@ -67,10 +63,10 @@ export function ProductPageClient({ product }: { product: IProduct }) {
           <span className="text-xs text-muted-foreground uppercase tracking-wider">{product.manufacturer}</span>
           <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-1">{product.name}</h1>
 
-          <div className="mt-6">
-            <span className="text-2xl md:text-3xl font-bold text-primary">{formatPrice(product.price)}</span>
+          <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/10 p-4">
+            <span className="text-xl md:text-2xl font-bold text-primary">Подберём и рассчитаем похожий вариант</span>
             <p className="text-sm text-muted-foreground mt-2">
-              Точная стоимость зависит от модели, ткани, размера, наличия на фабрике и доставки.
+              Стоимость зависит от выбранной фабрики, ткани, размера, комплектации и доставки.
             </p>
           </div>
 
@@ -162,7 +158,7 @@ export function ProductPageClient({ product }: { product: IProduct }) {
                   title=""
                   context={product.name}
                   subtitle="Опишите размер, цвет или пожелания — текст откроется готовым письмом."
-                  defaultMessage={`Хочу уточнить цену и наличие: ${product.name}.`}
+                  defaultMessage={`Хочу подобрать и рассчитать похожий вариант: ${product.name}.`}
                 />
               </div>
             </motion.div>

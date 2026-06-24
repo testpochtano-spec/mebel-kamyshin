@@ -1,14 +1,20 @@
 "use client";
 
 import { BUSINESS } from "@/data/business";
-import { Mail, MessageCircle, Phone, MapPin, Clock, ArrowRight, ExternalLink } from "lucide-react";
+import { Mail, MessageCircle, Phone, MapPin, Clock, CheckCircle2, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export function AboutContactSection() {
+  const trust = [
+    "26 лет работы в Камышине",
+    "официальные фабрики и документы",
+    "подбор по образцам, размерам и каталогам",
+  ];
+
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-14 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* About */}
@@ -19,18 +25,16 @@ export function AboutContactSection() {
             viewport={{ once: true }}
           >
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
-              О нашем магазине
+              Приезжайте в магазин или напишите
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6">{BUSINESS.about}</p>
             <div className="space-y-3">
-              <h3 className="font-medium text-foreground">Дополнительные услуги:</h3>
-              <ul className="space-y-2">
-                {BUSINESS.extraServices.map((s) => (
-                  <li key={s} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <ArrowRight className="w-4 h-4 mt-0.5 text-primary shrink-0" /> {s}
-                  </li>
-                ))}
-              </ul>
+              {trust.map((item) => (
+                <div key={item} className="flex items-start gap-3 text-sm text-foreground">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
             <Button variant="outline" nativeButton={false} className="mt-6 rounded-2xl" size="lg" render={<Link href="/about" />}>
               Подробнее о магазине <ExternalLink className="w-4 h-4 ml-1" />

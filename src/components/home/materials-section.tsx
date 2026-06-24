@@ -41,12 +41,12 @@ const details = [
 
 export function MaterialsSection() {
   return (
-    <section className="relative overflow-hidden bg-[#F5F0E8] py-16 md:py-24">
+    <section className="relative overflow-hidden bg-[#F5F0E8] py-14 md:py-20">
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-[0.86fr_1.14fr] gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -59,15 +59,15 @@ export function MaterialsSection() {
             </span>
 
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight">
-              Можно приехать и выбрать всё вживую
+              Материалы можно выбрать вживую
             </h2>
-            <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
+            <p className="mt-4 text-muted-foreground text-base md:text-lg leading-relaxed">
               В салоне есть образцы тканей, фасадов, столешниц, моек и цветовых решений.
               Если модель понравилась в каталоге, ее можно адаптировать под интерьер,
               размер, ткань и комплектацию.
             </p>
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-6 grid grid-cols-1 gap-3">
               {details.map(({ icon: Icon, title, text }, index) => (
                 <motion.div
                   key={title}
@@ -75,9 +75,9 @@ export function MaterialsSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.35, delay: index * 0.08 }}
                   viewport={{ once: true }}
-                  className="flex gap-4 rounded-2xl border border-[#DED4C5] bg-white/75 p-4 shadow-sm"
+                  className="flex gap-3 rounded-2xl border border-[#DED4C5] bg-white/75 p-4 shadow-sm"
                 >
-                  <div className="h-11 w-11 shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                  <div className="h-10 w-10 shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
@@ -89,7 +89,7 @@ export function MaterialsSection() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {media.map(({ title, subtitle, src, poster, icon: Icon }, index) => (
               <motion.article
                 key={title}
@@ -107,11 +107,9 @@ export function MaterialsSection() {
                   scale: { duration: 0.55 },
                 }}
                 viewport={{ once: true, margin: "-80px" }}
-                className={`group relative overflow-hidden rounded-3xl border border-white/70 bg-white shadow-xl shadow-black/10 will-change-transform ${
-                  index === 1 ? "sm:mt-12" : ""
-                }`}
+                className="group relative overflow-hidden rounded-2xl border border-white/70 bg-white shadow-lg shadow-black/10 will-change-transform"
               >
-                <div className="relative aspect-[9/14] min-h-[430px] max-h-[640px] overflow-hidden bg-[#dfd7ca]">
+                <div className="relative aspect-[4/5] min-h-[300px] overflow-hidden bg-[#dfd7ca]">
                   <video
                     className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.025]"
                     src={asset(src)}
@@ -124,11 +122,11 @@ export function MaterialsSection() {
                     aria-label={title}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-white/10" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-                    <div className="mb-3 h-10 w-10 rounded-xl bg-white/16 border border-white/20 flex items-center justify-center">
+                  <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                    <div className="mb-3 h-9 w-9 rounded-xl bg-white/16 border border-white/20 flex items-center justify-center">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="font-heading text-xl font-semibold">{title}</h3>
+                    <h3 className="font-heading text-lg font-semibold">{title}</h3>
                     <p className="mt-1 text-sm text-white/78 leading-relaxed">{subtitle}</p>
                   </div>
                 </div>

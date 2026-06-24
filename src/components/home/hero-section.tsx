@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Ruler, Truck, Star, ChevronRight, Percent } from "lucide-react";
+import { ArrowRight, MessageCircle, Shield, Ruler, Truck, Star, Percent } from "lucide-react";
 import { BUSINESS } from "@/data/business";
 import { motion } from "framer-motion";
 import { asset } from "@/lib/utils";
@@ -15,34 +16,42 @@ const features = [
 ];
 
 export function HeroSection() {
+  const whatsappHref = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent("Здравствуйте! Хочу подобрать мебель.")}`;
+
   return (
     <section className="relative bg-gradient-to-br from-background via-background to-secondary/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 lg:py-32">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           <motion.div
             className="flex-1 max-w-xl"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0.96, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
           >
             <span className="inline-block bg-primary/10 text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-6">
               Мебельный магазин в Камышине
             </span>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Добротная мебель
+              Добротная мебель{" "}
               <span className="block text-primary mt-2">для вашего дома</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
               26 лет подбираем фабричную мягкую и корпусную мебель от российских производителей.
-              Выберите модель из каталогов или приезжайте в магазин — поможем рассчитать цену, сроки и доставку.
+              Выберите направление в каталоге или приезжайте в магазин — поможем рассчитать стоимость, сроки и доставку.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button size="lg" nativeButton={false} className="rounded-2xl text-base px-8 h-12" render={<Link href="/catalog#request" />}>
-                Получить подбор <ChevronRight className="w-5 h-5 ml-1" />
+              <Button
+                size="lg"
+                nativeButton={false}
+                className="rounded-2xl text-base px-8 h-12 gap-2"
+                render={<a href={whatsappHref} target="_blank" rel="noopener noreferrer" />}
+              >
+                <MessageCircle className="w-5 h-5" />
+                Написать в WhatsApp
               </Button>
-              <Button variant="outline" size="lg" nativeButton={false} className="rounded-2xl text-base px-8 h-12" render={<Link href="/about" />}>
-                О магазине <ArrowRight className="w-4 h-4 ml-1" />
+              <Button variant="outline" size="lg" nativeButton={false} className="rounded-2xl text-base px-8 h-12" render={<Link href="/catalog" />}>
+                Открыть каталог <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </div>
 
@@ -62,16 +71,19 @@ export function HeroSection() {
 
           <motion.div
             className="flex-1 w-full"
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0.98, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
           >
             <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-                <img
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
                   src={asset("/showroom/store-exterior-real.jpg")}
                   alt="Магазин МЕБЕЛЬ в Камышине"
-                  className="w-full h-full object-cover"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 46vw, 100vw"
+                  className="object-cover"
                 />
               </div>
               <div className="absolute -bottom-4 -left-2 sm:-bottom-5 sm:-left-5 bg-white rounded-2xl shadow-xl px-4 py-3 sm:px-6 sm:py-4 max-w-[calc(100vw-2rem)]">

@@ -10,10 +10,6 @@ function imageSrc(src: string) {
   return src.startsWith("/") ? asset(src) : src;
 }
 
-function formatPrice(n: number) {
-  return n > 0 ? `от ${n.toLocaleString("ru-RU")} ₽` : "Цена по запросу";
-}
-
 export function ProductCard({ product }: { product: IProduct }) {
   return (
     <article className="group bg-white rounded-2xl overflow-hidden border border-border hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
@@ -39,8 +35,8 @@ export function ProductCard({ product }: { product: IProduct }) {
 
         <div className="flex items-end justify-between gap-3">
           <div>
-            <span className="text-sm font-semibold text-primary">{formatPrice(product.price)}</span>
-            <p className="text-xs text-muted-foreground mt-1">Наличие и сроки уточняются</p>
+            <span className="text-sm font-semibold text-primary">Подберём похожее</span>
+            <p className="text-xs text-muted-foreground mt-1">Ткань, размер и сроки уточняются</p>
           </div>
           <Button
             size="sm"

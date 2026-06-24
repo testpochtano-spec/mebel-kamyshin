@@ -123,7 +123,7 @@ export function CatalogPageClient() {
           </h1>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed max-w-2xl">
             На сайте собраны примеры мебели из магазина и электронные каталоги. Выберите направление,
-            отправьте заявку — мы уточним наличие, цену, доставку и сроки изготовления.
+            отправьте заявку — мы уточним наличие, комплектацию, доставку и сроки изготовления.
           </p>
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
             <Button
@@ -174,7 +174,7 @@ export function CatalogPageClient() {
 
           <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
             Каталоги работают как удобная воронка: выберите направление, пришлите модель или пожелания,
-            а магазин уточнит наличие, сроки, доставку и актуальную стоимость по рабочему номеру.
+            а магазин уточнит наличие, сроки, доставку и условия заказа по рабочему номеру.
           </p>
         </div>
       </div>
@@ -280,7 +280,7 @@ export function CatalogPageClient() {
               Примеры мебели
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Сейчас выбрано: {activeCategoryName}. Цены и наличие уточняются перед заказом.
+              Сейчас выбрано: {activeCategoryName}. Наличие и условия заказа уточняются перед оформлением.
             </p>
           </div>
 
@@ -324,7 +324,7 @@ export function CatalogPageClient() {
           </p>
           <div className="mt-6 space-y-3 text-sm text-white/85">
             <p>• уточним наличие в магазине и на фабрике</p>
-            <p>• рассчитаем цену, доставку и сроки</p>
+            <p>• рассчитаем заказ, доставку и сроки</p>
             <p>• подберём ткань, цвет и размер под интерьер</p>
           </div>
         </div>
