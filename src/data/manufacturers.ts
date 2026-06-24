@@ -9,6 +9,34 @@ export type ManufacturerGroup = {
   website?: string;
 };
 
+export type PartnerBrand = {
+  name: string;
+  category: string;
+  image?: string;
+  tone: "primary" | "gold" | "warm" | "stone" | "soft";
+};
+
+export const PARTNER_BRANDS: PartnerBrand[] = [
+  { name: "Doctor Sleep", category: "матрасы", tone: "soft" },
+  { name: "Wellson", category: "матрасы", tone: "soft" },
+  { name: "DREAMSON", category: "матрасы", tone: "soft" },
+  { name: "Меридиан", category: "матрасы", tone: "soft" },
+  { name: "Комфорт мебель", category: "мягкая мебель", tone: "warm" },
+  { name: "Регина", category: "мягкая мебель", tone: "warm" },
+  { name: "ДСВ", category: "кухни и корпусная мебель", tone: "primary" },
+  { name: "BTS", category: "корпусная мебель", tone: "primary" },
+  { name: "STEND", category: "кухни и корпусная мебель", image: "/brands/stendmebel.png", tone: "primary" },
+  { name: "Micon", category: "кухни и корпусная мебель", tone: "primary" },
+  { name: "DOMANI", category: "корпусная мебель", tone: "gold" },
+  { name: "Текс", category: "кухни и корпусная мебель", tone: "gold" },
+  { name: "СКИФ", category: "столешницы", image: "/brands/skif.png", tone: "stone" },
+  { name: "Кедр", category: "столешницы", tone: "stone" },
+  { name: "GranFest", category: "мойки и смесители", tone: "stone" },
+  { name: "MARRBAXX", category: "мойки и камень", tone: "stone" },
+  { name: "MAXSTONE", category: "камень", tone: "stone" },
+  { name: "KLADOV", category: "столы и стулья", tone: "warm" },
+];
+
 export const MANUFACTURER_GROUPS: ManufacturerGroup[] = [
   {
     id: "mattresses",
