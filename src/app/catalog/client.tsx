@@ -10,6 +10,7 @@ import {
   MODEL_ARCHIVES,
   type CatalogResource,
 } from "@/data/catalogs";
+import { MANUFACTURER_GROUPS } from "@/data/manufacturers";
 import { ProductCard } from "@/components/catalog/product-card";
 import { Button } from "@/components/ui/button";
 import { OrderForm } from "@/components/shared/order-form";
@@ -22,8 +23,10 @@ import {
   ExternalLink,
   FileText,
   FolderOpen,
+  Layers,
   MessageCircle,
   Phone,
+  Sparkles,
 } from "lucide-react";
 
 function updateCategory(category: string) {
@@ -151,16 +154,16 @@ export function CatalogPageClient() {
               <BookOpen className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <h2 className="font-heading text-xl font-bold text-foreground">Реальные каталоги</h2>
-              <p className="text-sm text-muted-foreground">PDF, архивы моделей и внешние ссылки</p>
+              <h2 className="font-heading text-xl font-bold text-foreground">Каталоги и подбор</h2>
+              <p className="text-sm text-muted-foreground">PDF-направления и внешние ссылки</p>
             </div>
           </div>
 
           <div className="grid grid-cols-3 gap-3">
             {[
-              ["6", "PDF-каталогов"],
-              ["352", "страницы"],
-              ["6", "ZIP-архивов"],
+              [String(FACTORY_CATALOGS.length), "PDF-направления"],
+              [String(MANUFACTURER_GROUPS.length), "групп фабрик"],
+              ["0", "цен на сайте"],
             ].map(([value, label]) => (
               <div key={label} className="rounded-2xl bg-background border border-border p-3">
                 <span className="block font-heading text-2xl font-bold text-foreground">{value}</span>
@@ -170,8 +173,8 @@ export function CatalogPageClient() {
           </div>
 
           <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-            Вместо выдуманного общего файла на сайте теперь лежат материалы поставщиков: ВВ-Мебель, Zaron,
-            Памир, Стендмебель и внешние каталоги декоров.
+            Каталоги работают как удобная воронка: выберите направление, пришлите модель или пожелания,
+            а магазин уточнит наличие, сроки, доставку и актуальную стоимость по рабочему номеру.
           </p>
         </div>
       </div>
@@ -180,10 +183,10 @@ export function CatalogPageClient() {
         <div className="flex items-end justify-between gap-5 mb-6">
           <div>
             <h2 id="catalogs-heading" className="font-heading text-2xl md:text-3xl font-bold text-foreground">
-              Каталоги фабрик
+              Каталоги и направления
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Откройте PDF, выберите модель или пришлите название в заявку на расчёт.
+              Откройте PDF, выберите направление или пришлите пожелания в заявку на расчёт.
             </p>
           </div>
         </div>
@@ -194,36 +197,79 @@ export function CatalogPageClient() {
           ))}
         </div>
 
-        <div className="mt-10 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 items-start">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <FolderOpen className="w-6 h-6 text-primary" />
+        {MODEL_ARCHIVES.length > 0 || EXTERNAL_CATALOGS.length > 0 ? (
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 items-start">
+            {MODEL_ARCHIVES.length > 0 ? (
               <div>
-                <h3 className="font-heading text-xl font-bold text-foreground">Архивы моделей</h3>
-                <p className="text-sm text-muted-foreground">ZIP-файлы Zaron по отдельным позициям</p>
+                <div className="flex items-center gap-3 mb-4">
+                  <FolderOpen className="w-6 h-6 text-primary" />
+                  <div>
+                    <h3 className="font-heading text-xl font-bold text-foreground">Архивы моделей</h3>
+                    <p className="text-sm text-muted-foreground">Отдельные материалы фабрик по моделям</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {MODEL_ARCHIVES.map((item) => (
+                    <CatalogCard key={item.href} item={item} compact />
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {MODEL_ARCHIVES.map((item) => (
-                <CatalogCard key={item.href} item={item} compact />
-              ))}
-            </div>
-          </div>
+            ) : null}
 
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <ExternalLink className="w-6 h-6 text-primary" />
+            {EXTERNAL_CATALOGS.length > 0 ? (
               <div>
-                <h3 className="font-heading text-xl font-bold text-foreground">Внешние материалы</h3>
-                <p className="text-sm text-muted-foreground">Онлайн-каталоги и публичные папки поставщиков</p>
+                <div className="flex items-center gap-3 mb-4">
+                  <ExternalLink className="w-6 h-6 text-primary" />
+                  <div>
+                    <h3 className="font-heading text-xl font-bold text-foreground">Внешние материалы</h3>
+                    <p className="text-sm text-muted-foreground">Онлайн-каталоги поставщиков, которые можно открыть отдельно</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {EXTERNAL_CATALOGS.map((item) => (
+                    <CatalogCard key={item.href} item={item} compact />
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="space-y-3">
-              {EXTERNAL_CATALOGS.map((item) => (
-                <CatalogCard key={item.href} item={item} compact />
-              ))}
-            </div>
+            ) : null}
           </div>
+        ) : null}
+      </section>
+
+      <section aria-labelledby="makers-heading" className="mb-16">
+        <div className="flex items-center gap-3 mb-6">
+          <Layers className="w-7 h-7 text-primary" />
+          <div>
+            <h2 id="makers-heading" className="font-heading text-2xl md:text-3xl font-bold text-foreground">
+              Актуальные фабрики по направлениям
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              Список обновлён по словам магазина. Старые бренды матрасов и мягкой мебели убраны из актуальной витрины.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {MANUFACTURER_GROUPS.map((group) => (
+            <article
+              key={group.id}
+              id={group.id}
+              className="scroll-mt-24 rounded-2xl border border-border bg-white p-5"
+            >
+              <span className="text-xs font-medium text-primary">{group.categories.join(" / ")}</span>
+              <h3 className="mt-2 font-heading text-xl font-bold text-foreground">{group.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{group.subtitle}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {group.suppliers.map((supplier) => (
+                  <span key={supplier} className="inline-flex items-center gap-1.5 rounded-full bg-background border border-border px-3 py-1.5 text-xs text-foreground">
+                    <Sparkles className="w-3 h-3 text-primary" />
+                    {supplier}
+                  </span>
+                ))}
+              </div>
+              <p className="mt-4 text-xs text-muted-foreground leading-relaxed">{group.note}</p>
+            </article>
+          ))}
         </div>
       </section>
 

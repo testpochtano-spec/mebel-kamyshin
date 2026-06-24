@@ -69,8 +69,8 @@ export function HeroSection() {
             <div className="relative">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src={asset("/showroom/store-exterior-real.jpg")}
-                  alt="Магазин МЕБЕЛЬ в Камышине"
+                  src={asset("/showroom/sofa-modular-showroom.jpg")}
+                  alt="Мебельный зал магазина МЕБЕЛЬ в Камышине"
                   className="w-full h-full object-cover"
                 />
               </div>

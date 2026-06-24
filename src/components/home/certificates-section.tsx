@@ -69,11 +69,11 @@ export function CertificatesSection() {
           <div className="flex items-center gap-3 mb-2">
             <BookOpen className="w-8 h-8 text-primary" />
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-              Каталоги фабрик
+              Каталоги и направления
             </h2>
           </div>
           <p className="text-muted-foreground text-lg mb-8">
-            На сайте собраны реальные PDF-каталоги поставщиков и архивы по отдельным моделям
+            На сайте собраны актуальные PDF-направления без цен: выберите мебель, а магазин рассчитает заказ по телефону
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

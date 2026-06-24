@@ -1,91 +1,91 @@
-export type Manufacturer = {
-  name: string;
+export type ManufacturerGroup = {
+  id: string;
+  title: string;
   subtitle: string;
   categories: string[];
-  logo?: string;
-  catalogSlug?: string;
+  suppliers: string[];
+  note: string;
+  accent: "primary" | "gold" | "warm" | "stone" | "soft";
   website?: string;
-  note?: string;
 };
 
-export const MANUFACTURERS: Manufacturer[] = [
+export const MANUFACTURER_GROUPS: ManufacturerGroup[] = [
   {
-    name: "ВВ-Мебель",
-    subtitle: "Стулья, столы и мебельные позиции по каталогу",
-    categories: ["Каталог PDF", "Мебель для дома"],
-    logo: "/brands/vv-mebel.png",
-    catalogSlug: "vv-mebel-2025-2026",
-    note: "Каталог 2025-2026 загружен на сайт",
+    id: "mattresses",
+    title: "Матрасы и товары для сна",
+    subtitle: "Подбор по размеру, жесткости, наполнению и бюджету",
+    categories: ["Матрасы", "Кровати", "Сон"],
+    suppliers: ["Wellson", "Doctor Sleep", "DREAMSON", "Меридиан"],
+    note: "Работаем с новыми предложениями по матрасам вместо прежних брендов.",
+    accent: "soft",
   },
   {
-    name: "Zaron",
-    subtitle: "Корпусная мебель и отдельные модельные архивы",
-    categories: ["Каталог PDF", "ZIP-архивы"],
-    logo: "/brands/zaron.png",
-    catalogSlug: "zaron-2025-2026",
-    note: "Есть каталог и архивы по моделям",
+    id: "soft-furniture",
+    title: "Мягкая мебель",
+    subtitle: "Диваны, кресла, модульные решения и обивки под интерьер",
+    categories: ["Диваны", "Кресла", "Обивки"],
+    suppliers: ["Волгоград Комфорт мебель", "Регина", "Стиль и Комфорт"],
+    note: "Цифровые фото от фабрик ожидаются к августу. До этого подбираем по образцам, каталогам и консультации.",
+    accent: "warm",
   },
   {
-    name: "Памир",
-    subtitle: "Модульная корпусная мебель, гостиные, прихожие, спальни",
-    categories: ["Каталог PDF", "Модульные системы"],
-    logo: "/brands/pamir.png",
-    catalogSlug: "pamir-2025-2026",
-    website: "https://pamirmebel.ru/",
-    note: "Официальный сайт содержит каталог и раздел скачивания",
-  },
-  {
-    name: "Стендмебель",
-    subtitle: "Корпусная мебель, кухни и коллекции для дома",
-    categories: ["Каталог PDF", "Корпусная мебель"],
-    logo: "/brands/stendmebel.png",
-    catalogSlug: "stendmebel-korpus-2026",
-    website: "https://stendmebel.ru/",
-    note: "На официальном сайте есть каталог мебели 2026",
-  },
-  {
-    name: "СКИФ",
-    subtitle: "Декоры для столешниц, мебельных щитов, ПЛП, HPL и кромки",
-    categories: ["Декоры", "Онлайн-каталог"],
-    logo: "/brands/skif.png",
+    id: "countertops",
+    title: "Столешницы и декоры",
+    subtitle: "Декоры для кухонь, рабочих поверхностей и мебельных щитов",
+    categories: ["Столешницы", "Декоры", "HPL"],
+    suppliers: ["СКИФ", "Кедр"],
+    note: "СКИФ - Санкт-Петербург, Кедр - Воронежская область. Декоры подбираем под фасады и интерьер.",
+    accent: "stone",
     website: "https://skifltd.com/katalog-dekorov/",
-    note: "Открытый онлайн-каталог декоров",
   },
   {
-    name: "MC Style",
-    subtitle: "Публичные материалы поставщика",
-    categories: ["Онлайн-документ"],
-    logo: "/brands/mc-style.png",
-    website: "https://bitrix24public.com/mcstyle.bitrix24.ru/docs/pub/085d783322c638b62b5eebb75b4a7afa/default/?&",
-    note: "Внешний публичный документ",
+    id: "kitchens",
+    title: "Кухни",
+    subtitle: "Модульные кухни и комплекты под размеры помещения",
+    categories: ["Кухни", "Фасады", "Модули"],
+    suppliers: ["ДСВ", "COLA ДСВ", "Форес", "DARS", "Альбина", "Стиль", "Текс", "Диал", "STEND", "Micon", "BTS"],
+    note: "Подбор начинается с размеров кухни, желаемого цвета фасадов и нужной комплектации.",
+    accent: "primary",
   },
   {
-    name: "Askona",
-    subtitle: "Матрасы, кровати, диваны и товары для сна",
-    categories: ["Матрасы", "Кровати", "Диваны"],
-    logo: "/brands/askona.svg",
-    website: "https://www.askona.ru/",
-    note: "Официальный каталог на сайте бренда",
+    id: "cabinet",
+    title: "Корпусная мебель",
+    subtitle: "Шкафы, стенки, прихожие, комоды, спальни и системы хранения",
+    categories: ["Шкафы", "Гостиные", "Прихожие"],
+    suppliers: [
+      "BTS",
+      "Харон",
+      "Мебелони МБ",
+      "СТ Стенд мебель",
+      "Вся мебель",
+      "STEND",
+      "Стиль",
+      "Micon",
+      "Текс",
+      "DOMANI",
+      "Диал",
+      "Альбина",
+      "Росток мебель",
+    ],
+    note: "Подбираем готовые решения и модульные системы под комнату, цвет и бюджет.",
+    accent: "gold",
   },
   {
-    name: "Vega",
-    subtitle: "Ортопедические матрасы и товары для сна",
-    categories: ["Матрасы"],
-    logo: "/brands/vega.png",
-    note: "Бренд указан в материалах магазина",
-  },
-  {
-    name: "Березка",
-    subtitle: "Матрасы и решения для сна",
-    categories: ["Матрасы"],
-    logo: "/brands/berezka.svg",
-    note: "Бренд указан в материалах магазина",
-  },
-  {
-    name: "ФММ",
-    subtitle: "Фабрика мягкой мебели",
-    categories: ["Диваны", "Мягкая мебель"],
-    logo: "/brands/fmm.png",
-    note: "Бренд указан в материалах магазина",
+    id: "tables",
+    title: "Столы, стулья и кухонные марки",
+    subtitle: "Обеденные группы, мойки, камень и комплектующие",
+    categories: ["Столы", "Стулья", "Мойки", "Камень"],
+    suppliers: ["KLADOV", "GranFest", "PREMIAL", "MARRBAXX", "MAXSTONE"],
+    note: "Фабричные столы, стулья, мойки и материалы можно подобрать вместе с кухней.",
+    accent: "stone",
   },
 ];
+
+export const MANUFACTURERS = MANUFACTURER_GROUPS.flatMap((group) =>
+  group.suppliers.map((name) => ({
+    name,
+    subtitle: group.title,
+    categories: group.categories,
+    note: group.note,
+  })),
+);

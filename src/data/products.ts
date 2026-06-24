@@ -9,7 +9,7 @@ export const PRODUCTS: IProduct[] = [
     price: 0,
     inStock: false,
     customOrder: true,
-    manufacturer: "Подбор по наличию и каталогам",
+    manufacturer: "Комфорт мебель, Регина, Стиль и Комфорт",
     description:
       "Мягкий диван светлого оттенка для гостиной или комнаты отдыха. Точную комплектацию, цвет ткани, размеры и наличие уточняем перед заказом.",
     specs: {
@@ -31,7 +31,7 @@ export const PRODUCTS: IProduct[] = [
     price: 0,
     inStock: false,
     customOrder: true,
-    manufacturer: "Подбор по наличию и каталогам",
+    manufacturer: "Комфорт мебель, Регина, Стиль и Комфорт",
     description:
       "Угловой диван для семейной гостиной. Можно подобрать похожую модель, сторону угла, ткань и размеры по каталогам фабрик.",
     specs: {
@@ -53,7 +53,7 @@ export const PRODUCTS: IProduct[] = [
     price: 0,
     inStock: false,
     customOrder: true,
-    manufacturer: "Подбор по наличию и каталогам",
+    manufacturer: "Комфорт мебель, Регина, Стиль и Комфорт",
     description:
       "Акцентный прямой диван для современного интерьера. Подберём похожую модель в спокойной или яркой обивке, с нужным механизмом и размером.",
     specs: {
@@ -75,7 +75,7 @@ export const PRODUCTS: IProduct[] = [
     price: 0,
     inStock: false,
     customOrder: true,
-    manufacturer: "Подбор по наличию и каталогам",
+    manufacturer: "Комфорт мебель, Регина, Стиль и Комфорт",
     description:
       "Практичный раскладной диван со спальным местом и ящиком для хранения. Подберём вариант по размеру комнаты и желаемой ткани.",
     specs: {
@@ -97,14 +97,14 @@ export const PRODUCTS: IProduct[] = [
     price: 0,
     inStock: false,
     customOrder: true,
-    manufacturer: "Березка, Vega, Ascona и другие",
+    manufacturer: "Wellson, Doctor Sleep, DREAMSON, Меридиан",
     description:
       "Подбираем матрасы по размеру, жёсткости, наполнению и бюджету. В магазине можно посмотреть образцы и уточнить подходящую модель.",
     specs: {
       "Категория": "Матрасы",
       "Размеры": "Односпальные, полуторные, двуспальные",
       "Жёсткость": "Подбирается индивидуально",
-      "Производители": "Российские фабрики",
+      "Производители": "Wellson, Doctor Sleep, DREAMSON, Меридиан",
       "Наличие": "Уточняется",
       "Доставка": "По региону",
     },
@@ -119,7 +119,7 @@ export const PRODUCTS: IProduct[] = [
     price: 0,
     inStock: false,
     customOrder: true,
-    manufacturer: "Подбор по наличию и каталогам",
+    manufacturer: "Wellson, Doctor Sleep, DREAMSON, Меридиан",
     description:
       "Кровати, основания и матрасы подбираются комплектом. Можно выбрать размер, цвет корпуса, изголовье и вариант хранения.",
     specs: {
@@ -141,7 +141,7 @@ export const PRODUCTS: IProduct[] = [
     price: 0,
     inStock: false,
     customOrder: true,
-    manufacturer: "Подбор по каталогам фабрик",
+    manufacturer: "BTS, Харон, Мебелони МБ, STEND, DOMANI и другие",
     description:
       "Шкафы, комоды, стенки, витрины и другие решения для хранения. Подберём фасады, цвет, габариты и комплектацию под вашу комнату.",
     specs: {
@@ -163,7 +163,7 @@ export const PRODUCTS: IProduct[] = [
     price: 0,
     inStock: false,
     customOrder: true,
-    manufacturer: "Подбор по каталогам фабрик",
+    manufacturer: "ДСВ, DARS, Micon, STEND, СКИФ, Кедр, KLADOV",
     description:
       "Кухонные модули, столы и обеденные группы подбираются по размеру помещения, цвету фасадов и нужной комплектации.",
     specs: {
