@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { asset } from "@/lib/utils";
 
 const features = [
-  { icon: Shield, text: "Российские фабрики" },
+  { icon: Shield, text: "Официальные фабрики" },
   { icon: Star, text: "Каталоги и образцы" },
   { icon: Truck, text: "Доставка и сборка" },
   { icon: Ruler, text: "Подбор под размеры" },
@@ -33,7 +33,7 @@ export function HeroSection() {
               <span className="block text-primary mt-2">для вашего дома</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
-              Фабричная мягкая и корпусная мебель от российских производителей.
+              26 лет подбираем фабричную мягкую и корпусную мебель от российских производителей.
               Выберите модель из каталогов или приезжайте в магазин — поможем рассчитать цену, сроки и доставку.
             </p>
 

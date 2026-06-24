@@ -161,9 +161,9 @@ export function CatalogPageClient() {
 
           <div className="grid grid-cols-3 gap-3">
             {[
-              [String(FACTORY_CATALOGS.length), "PDF-направления"],
+              [String(FACTORY_CATALOGS.length), "наших PDF"],
+              [String(EXTERNAL_CATALOGS.length), "офиц. материалов"],
               [String(MANUFACTURER_GROUPS.length), "групп фабрик"],
-              ["0", "цен на сайте"],
             ].map(([value, label]) => (
               <div key={label} className="rounded-2xl bg-background border border-border p-3">
                 <span className="block font-heading text-2xl font-bold text-foreground">{value}</span>
