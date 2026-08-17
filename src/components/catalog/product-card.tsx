@@ -1,31 +1,47 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { IProduct } from "@/types/product";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { asset } from "@/lib/utils";
+import { asset, cn } from "@/lib/utils";
 
 function imageSrc(src: string) {
   return src.startsWith("/") ? asset(src) : src;
 }
 
 export function ProductCard({ product }: { product: IProduct }) {
+  const imageFit = product.cardImageFit ?? "cover";
+
   return (
     <article className="group bg-white rounded-2xl overflow-hidden border border-border hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
       <Link href={`/product/${product.slug}`} className="block relative overflow-hidden aspect-[4/3] no-underline bg-background">
-        <img
+        <Image
           src={imageSrc(product.images[0])}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
+          fill
+          sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+          className={cn(
+            "transition-transform duration-500",
+            imageFit === "contain"
+              ? "object-contain p-2 sm:p-3 group-hover:scale-[1.025]"
+              : "object-cover group-hover:scale-105",
+          )}
         />
-        <span className="absolute top-3 left-3 bg-white/90 text-foreground text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
-          Подбор и расчёт
-        </span>
       </Link>
 
       <div className="p-5">
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+            Подбор и расчёт
+          </span>
+          {product.customOrder ? (
+            <span className="rounded-full bg-secondary/20 px-3 py-1 text-xs font-medium text-secondary-foreground">
+              Под заказ
+            </span>
+          ) : null}
+        </div>
         <Link href={`/product/${product.slug}`} className="no-underline">
           <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-1">
             {product.name}

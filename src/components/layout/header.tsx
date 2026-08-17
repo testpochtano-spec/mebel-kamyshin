@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { BUSINESS } from "@/data/business";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MessengerLinks } from "@/components/shared/messenger-links";
 
 const NAV = [
   { href: "/", label: "Главная" },
@@ -21,13 +22,13 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 min-h-16 py-2 flex items-center justify-between gap-4">
         <Link href="/" className="font-heading text-xl font-bold text-foreground no-underline tracking-tight">
           МЕБЕЛЬ
           <span className="text-primary block text-xs font-sans font-medium -mt-0.5">Камышин</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {NAV.map(({ href, label }) => (
             <Link
               key={href}
@@ -42,13 +43,16 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href={`tel:${BUSINESS.phone.replace(/-/g, "")}`}
-            className="hidden lg:flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors no-underline"
-          >
-            <Phone className="w-4 h-4" />
-            {BUSINESS.phone}
-          </a>
+          <div className="hidden lg:flex flex-col items-end gap-1">
+            <a
+              href={`tel:${BUSINESS.phone.replace(/\D/g, "")}`}
+              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors no-underline"
+            >
+              <Phone className="w-4 h-4" />
+              {BUSINESS.phone}
+            </a>
+            <MessengerLinks className="justify-end" />
+          </div>
 
           <Button
             size="sm"
@@ -86,9 +90,10 @@ export function Header() {
               {label}
             </Link>
           ))}
-          <a href={`tel:${BUSINESS.phone.replace(/-/g, "")}`} className="text-sm text-primary font-medium no-underline flex items-center gap-1.5">
+          <a href={`tel:${BUSINESS.phone.replace(/\D/g, "")}`} className="text-sm text-primary font-medium no-underline flex items-center gap-1.5">
             <Phone className="w-4 h-4" /> {BUSINESS.phone}
           </a>
+          <MessengerLinks variant="labels" onNavigate={() => setOpen(false)} />
           <Link
             href="/catalog#request"
             onClick={() => setOpen(false)}

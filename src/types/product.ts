@@ -11,6 +11,7 @@ export interface IProduct {
   description: string;
   specs: Record<string, string>;
   images: string[];
+  cardImageFit?: "cover" | "contain";
   createdAt: string;
 }
 

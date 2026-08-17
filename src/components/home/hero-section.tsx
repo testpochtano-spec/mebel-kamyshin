@@ -20,8 +20,8 @@ export function HeroSection() {
 
   return (
     <section className="relative bg-gradient-to-br from-background via-background to-secondary/10 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 lg:py-32">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div className="max-w-7xl mx-auto px-4 py-12 md:py-16 lg:py-20">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
           <motion.div
             className="flex-1 max-w-xl"
             initial={{ opacity: 0.96, y: 12 }}
@@ -50,12 +50,12 @@ export function HeroSection() {
                 <MessageCircle className="w-5 h-5" />
                 Написать в WhatsApp
               </Button>
-              <Button variant="outline" size="lg" nativeButton={false} className="rounded-2xl text-base px-8 h-12" render={<Link href="/catalog" />}>
-                Открыть каталог <ArrowRight className="w-4 h-4 ml-1" />
+              <Button variant="outline" size="lg" nativeButton={false} className="rounded-2xl text-base px-8 h-12" render={<Link href="#catalog-preview" />}>
+                Смотреть каталог <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
               {features.map(({ icon: Icon, text }) => (
                 <span key={text} className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Icon className="w-5 h-5 text-primary" /> {text}

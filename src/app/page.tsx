@@ -25,10 +25,10 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <PopularProductsSection />
       <CategoriesSection />
       <HowToOrderSection />
       <MaterialsSection />
-      <PopularProductsSection />
       <AdvantagesSection />
       <PartnerStripSection />
       <AboutContactSection />

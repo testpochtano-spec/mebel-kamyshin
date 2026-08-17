@@ -7,10 +7,10 @@ import { asset } from "@/lib/utils";
 
 export function CategoriesSection() {
   return (
-    <section className="py-14 md:py-20 bg-white">
+    <section className="py-14 md:py-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-10 max-w-3xl">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">Что подбираем</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">Направления каталога</h2>
           <p className="mt-3 text-muted-foreground text-lg leading-relaxed">
             Основные направления магазина. По каждому можно открыть каталог, написать или приехать в салон.
           </p>
