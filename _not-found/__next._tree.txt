@@ -1,2 +1,2 @@
-:HL["/mebel-kamyshin/_next/static/chunks/0pjtyjzukd5j3.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"uyCFSvq3GGjt6pBBW-TSz"}
+:HL["/mebel-kamyshin/_next/static/chunks/0s70i5f9zeqbf.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"YfQyFOBT-duegWEs9cYPo"}
