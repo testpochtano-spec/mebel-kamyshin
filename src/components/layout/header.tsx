@@ -43,15 +43,15 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <div className="hidden lg:flex flex-col items-end gap-1">
+          <div className="hidden lg:flex flex-col items-center gap-1">
             <a
               href={`tel:${BUSINESS.phone.replace(/\D/g, "")}`}
-              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors no-underline"
+              className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors no-underline"
             >
               <Phone className="w-4 h-4" />
               {BUSINESS.phone}
             </a>
-            <MessengerLinks className="justify-end" />
+            <MessengerLinks className="justify-center" />
           </div>
 
           <Button

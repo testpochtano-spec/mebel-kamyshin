@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { PRODUCTS, CATEGORIES } from "@/data/products";
-import { BUSINESS } from "@/data/business";
 import {
   EXTERNAL_CATALOGS,
   FACTORY_CATALOGS,
@@ -17,15 +16,12 @@ import { OrderForm } from "@/components/shared/order-form";
 import { asset } from "@/lib/utils";
 import {
   Archive,
-  BookOpen,
   Download,
   Eye,
   ExternalLink,
   FileText,
   FolderOpen,
   Layers,
-  MessageCircle,
-  Phone,
   Sparkles,
 } from "lucide-react";
 
@@ -112,72 +108,52 @@ export function CatalogPageClient() {
   const activeCategoryName = CATEGORIES.find((c) => c.id === category)?.name || "Все примеры";
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10 md:py-16">
-      <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start mb-14">
-        <div>
-          <span className="inline-flex items-center rounded-full bg-primary/10 text-primary px-4 py-1.5 text-sm font-medium mb-5">
-            Витрина и каталоги фабрик
-          </span>
-          <h1 className="font-heading text-3xl md:text-5xl font-bold text-foreground">
-            Подберём мебель под ваш дом
-          </h1>
-          <p className="mt-4 text-muted-foreground text-lg leading-relaxed max-w-2xl">
-            На сайте собраны примеры мебели из магазина и электронные каталоги. Выберите направление,
-            отправьте заявку — мы уточним наличие, комплектацию, доставку и сроки изготовления.
-          </p>
-          <div className="mt-7 flex flex-col sm:flex-row gap-3">
-            <Button
-              size="lg"
-              nativeButton={false}
-              className="rounded-2xl text-base px-7 h-12 gap-2"
-              render={<a href="#request" />}
-            >
-              <MessageCircle className="w-5 h-5" />
-              Получить расчёт
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              nativeButton={false}
-              className="rounded-2xl text-base px-7 h-12 gap-2"
-              render={<a href={`tel:${BUSINESS.phone.replace(/\D/g, "")}`} />}
-            >
-              <Phone className="w-5 h-5" />
-              Позвонить
-            </Button>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-3xl border border-border p-5 md:p-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <h2 className="font-heading text-xl font-bold text-foreground">Каталоги и подбор</h2>
-              <p className="text-sm text-muted-foreground">PDF-направления и внешние ссылки</p>
-            </div>
+    <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <section aria-labelledby="examples-heading" className="mb-16">
+        <div className="mb-7 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span className="mb-3 inline-flex items-center rounded-full bg-primary/10 text-primary px-4 py-1.5 text-sm font-medium">
+              Каталог мебели
+            </span>
+            <h1 id="examples-heading" className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+              Примеры мебели для подбора
+            </h1>
+            <p className="mt-3 max-w-2xl text-muted-foreground leading-relaxed">
+              Сейчас выбрано: {activeCategoryName}. Выберите карточку, которая понравилась, а мы уточним ткань,
+              размер, комплектацию, доставку и сроки.
+            </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
-            {[
-              [String(FACTORY_CATALOGS.length), "наших PDF"],
-              [String(EXTERNAL_CATALOGS.length), "офиц. материалов"],
-              [String(MANUFACTURER_GROUPS.length), "групп фабрик"],
-            ].map(([value, label]) => (
-              <div key={label} className="rounded-2xl bg-background border border-border p-3">
-                <span className="block font-heading text-2xl font-bold text-foreground">{value}</span>
-                <span className="block text-xs text-muted-foreground">{label}</span>
-              </div>
+          <div className="flex gap-2 flex-wrap md:justify-end">
+            {CATEGORIES.map((cat) => (
+              <Button
+                key={cat.id}
+                variant={category === cat.id ? "default" : "outline"}
+                size="sm"
+                onClick={() => updateCategory(cat.id)}
+                className="rounded-full text-sm"
+              >
+                {cat.name}
+              </Button>
             ))}
           </div>
-
-          <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-            Каталоги работают как удобная воронка: выберите направление, пришлите модель или пожелания,
-            а магазин уточнит наличие, сроки, доставку и условия заказа по рабочему номеру.
-          </p>
         </div>
-      </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {filtered.map((p, i) => (
+            <ProductCard key={p.id} product={p} eager={i < 4} />
+          ))}
+        </div>
+
+        {filtered.length === 0 && (
+          <div className="text-center py-20 bg-white rounded-3xl border border-border">
+            <p className="text-muted-foreground text-lg">По этой категории пока нет примеров на сайте.</p>
+            <Button className="mt-5 rounded-2xl" onClick={() => updateCategory("all")}>
+              Смотреть все примеры
+            </Button>
+          </div>
+        )}
+      </section>
 
       <section aria-labelledby="catalogs-heading" className="mb-16">
         <div className="flex items-end justify-between gap-5 mb-6">
@@ -271,48 +247,6 @@ export function CatalogPageClient() {
             </article>
           ))}
         </div>
-      </section>
-
-      <section aria-labelledby="examples-heading">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8">
-          <div>
-            <h2 id="examples-heading" className="font-heading text-2xl md:text-3xl font-bold text-foreground">
-              Примеры мебели
-            </h2>
-            <p className="mt-2 text-muted-foreground">
-              Сейчас выбрано: {activeCategoryName}. Наличие и условия заказа уточняются перед оформлением.
-            </p>
-          </div>
-
-          <div className="flex gap-2 flex-wrap">
-            {CATEGORIES.map((cat) => (
-              <Button
-                key={cat.id}
-                variant={category === cat.id ? "default" : "outline"}
-                size="sm"
-                onClick={() => updateCategory(cat.id)}
-                className="rounded-full text-sm"
-              >
-                {cat.name}
-              </Button>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filtered.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-
-        {filtered.length === 0 && (
-          <div className="text-center py-20 bg-white rounded-3xl border border-border">
-            <p className="text-muted-foreground text-lg">По этой категории пока нет примеров на сайте.</p>
-            <Button className="mt-5 rounded-2xl" onClick={() => updateCategory("all")}>
-              Смотреть все примеры
-            </Button>
-          </div>
-        )}
       </section>
 
       <section id="request" className="mt-16 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start scroll-mt-24">
