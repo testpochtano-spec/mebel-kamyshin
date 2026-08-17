@@ -20,7 +20,7 @@ export const PRODUCTS: IProduct[] = [
       "Под заказ": "Да",
       "Доставка": "Камышин, Волгоградская и Саратовская область",
     },
-    images: ["/showroom/tahta-test-2.jpg", "/showroom/tahta-test-1.jpg"],
+    images: ["/showroom/tahta-test-1.jpg", "/showroom/tahta-test-2.jpg"],
     createdAt: "2026-08-17",
   },
   {
