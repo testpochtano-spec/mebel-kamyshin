@@ -2,6 +2,28 @@ import { IProduct } from "@/types/product";
 
 export const PRODUCTS: IProduct[] = [
   {
+    id: "9",
+    slug: "tahta-dlya-doma",
+    name: "Тахта для дома",
+    category: "divan",
+    price: 0,
+    inStock: false,
+    customOrder: true,
+    manufacturer: "Мягкая мебель под заказ",
+    description:
+      "Компактная тахта для гостиной, детской или комнаты отдыха. Можно подобрать ткань, размер и исполнение под интерьер.",
+    specs: {
+      "Категория": "Тахта",
+      "Формат": "Диван-тахта",
+      "Обивка": "Подбирается по образцам ткани",
+      "Размер": "Уточняется перед заказом",
+      "Под заказ": "Да",
+      "Доставка": "Камышин, Волгоградская и Саратовская область",
+    },
+    images: ["/showroom/tahta-test-2.jpg", "/showroom/tahta-test-1.jpg"],
+    createdAt: "2026-08-17",
+  },
+  {
     id: "1",
     slug: "svetlyy-divan-s-ottomankoy",
     name: "Светлый диван с оттоманкой",
